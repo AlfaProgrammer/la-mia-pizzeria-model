@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model List<PizzaModel>
+<h1>Pagina Elenco Pizze</h1>
+
+
+<ul class="pl-0">
+
+    @if (@Model.Count > 0)
+    {
+        
+        @foreach (var pizza in @Model)
+        {
+            <li class="d-flex mb-2 list-unstyled">
+                <figure class="me-4" style="height: 250px;">
+                    <img src="https://picsum.photos/id/237/200/300" style="object-fit:cover; object-position: center; height: 100%;"/>
+                </figure>
+                <div>
+                    <p>ID Pizza: @pizza.Id</p>
+                    <p>Nome: @pizza.Name</p>
+                    <p>Prezzo: @pizza.Price</p>
+                    <a href="@Url.Action("Details", "Pizza", new { id = @pizza.Id })"> Visualizza Dettagli </a>
+                </div>
+            </li>
+        }
+    }
+    else
+    {
+        <p>Non ci sono Pizze da visualizzare </p>    
+    }
+
+
+</ul>
